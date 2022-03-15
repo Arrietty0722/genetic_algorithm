@@ -18,3 +18,33 @@ int main()
 
     return 0;
 }
+
+void make_heatmap(
+    cv::Mat img,
+    cv::Mat heatmap)
+{
+    float value;
+    int pix_value;
+    double maxVal;
+    cv::minMaxLoc(img, NULL, maxVal, NULL, NULL);
+    float cof = 255 / maxVal;
+    for (int y = 0; y < img.rows; y += 1)
+    {
+        for (int x = 0; x < img.cols; x += 1)
+        {
+            if (x != 0 && y != 0 && x != img.rows && y != img.cols)
+            {
+                value = img.at<float>(x, y);
+                pix_value = (int)(cof * value);
+            }
+            else
+            {
+                pix_value = 125;
+            }
+
+            heatmap.at<unsigned char>(x, y)[0] = pix_value;
+            heatmap.at<unsigned char>(x, y)[1] = pix_value;
+            heatmap.at<unsigned char>(x, y)[2] = pix_value;
+        }
+    }
+}
