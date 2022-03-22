@@ -73,28 +73,71 @@ using namespace std;
 //     return 0;
 // }
 
+// int main()
+// {
+//     int N;
+//     int a[110];
+//     cin >> N;
+//     for (int i = 0; i < N; ++i)
+//         cin >> a[i];
+
+//     sort(a, a + N, greater<int>());
+//     int Alice = 0;
+//     int Bob = 0;
+//     for (int i = 0; i < N; ++i)
+//     {
+//         if (i % 2 == 0)
+//         {
+//             Alice += a[i];
+//         }
+//         else
+//         {
+//             Bob += a[i];
+//         }
+//         cout << Alice - Bob << endl;
+//     }
+//     return 0;
+// }
+
+int n, W;
+// int weight[110], value[110];
+// int weight[6], value[6];
+int dp[10][10010];
+
 int main()
 {
-    int N;
-    int a[110];
-    cin >> N;
-    for (int i = 0; i < N; ++i)
-        cin >> a[i];
-
-    sort(a, a + N, greater<int>());
-    int Alice = 0;
-    int Bob = 0;
-    for (int i = 0; i < N; ++i)
+    // cin >> n >> W;
+    // for (int i = 0; i < n; ++i)
+    //     cin >> value[i] >> weight[i];
+    n = 6;
+    W = 9;
+    int weight[6] = {2, 1, 3, 2, 1, 5};
+    int value[6] = {3, 2, 6, 1, 3, 85};
+    for (int w = 0; w <= W; ++w)
+        dp[0][w] = 0;
+    for (int i = 0; i <= n; ++i)
     {
-        if (i % 2 == 0)
+        for (int w = 0; w <= W; ++w)
         {
-            Alice += a[i];
+            if (w >= weight[i])
+            {
+                dp[i + 1][w] = max(dp[i][w - weight[i]] + value[i], dp[i][w]);
+            }
+            else
+            {
+                dp[i + 1][w] = dp[i][w];
+            }
+            if (dp[i][w] < 10)
+            {
+                cout << dp[i][w] << "  ";
+            }
+            else
+            {
+                cout << dp[i][w] << " ";
+            }
         }
-        else
-        {
-            Bob += a[i];
-        }
-        cout << Alice - Bob << endl;
+        cout << endl;
     }
+
     return 0;
 }
