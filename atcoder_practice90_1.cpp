@@ -99,34 +99,83 @@ using namespace std;
 //     return 0;
 // }
 
+// int n, W;
+// // int weight[110], value[110];
+// // int weight[6], value[6];
+// int dp[10][10010];
+
+// int main()
+// {
+//     // cin >> n >> W;
+//     // for (int i = 0; i < n; ++i)
+//     //     cin >> value[i] >> weight[i];
+//     n = 6;
+//     W = 9;
+//     int weight[6] = {2, 1, 3, 2, 1, 5};
+//     int value[6] = {3, 2, 6, 1, 3, 85};
+//     for (int w = 0; w <= W; ++w)
+//         dp[0][w] = 0;
+//     for (int i = 0; i <= n; ++i)
+//     {
+//         for (int w = 0; w <= W; ++w)
+//         {
+//             if (w >= weight[i])
+//             {
+//                 dp[i + 1][w] = max(dp[i][w - weight[i]] + value[i], dp[i][w]);
+//             }
+//             else
+//             {
+//                 dp[i + 1][w] = dp[i][w];
+//             }
+//             if (dp[i][w] < 10)
+//             {
+//                 cout << dp[i][w] << "  ";
+//             }
+//             else
+//             {
+//                 cout << dp[i][w] << " ";
+//             }
+//         }
+//         cout << endl;
+//     }
+
+//     return 0;
+// }
+
 int n, W;
 // int weight[110], value[110];
 // int weight[6], value[6];
-int dp[10][10010];
+bool dp[10][10010];
 
 int main()
 {
     // cin >> n >> W;
     // for (int i = 0; i < n; ++i)
     //     cin >> value[i] >> weight[i];
-    n = 6;
-    W = 9;
-    int weight[6] = {2, 1, 3, 2, 1, 5};
-    int value[6] = {3, 2, 6, 1, 3, 85};
+    // n = 6;
+    n = 3;
+    // W = 9;
+    W = 10;
+    // int a[n] = {2, 1, 3, 2, 1, 5};
+    int a[n] = {7, 5, 3, 0};
     for (int w = 0; w <= W; ++w)
-        dp[0][w] = 0;
-    for (int i = 0; i <= n; ++i)
     {
+        dp[0][w] = false;
+        if (w == 0)
+            dp[0][w] = true;
+    }
+
+    for (int i = 0; i <= n; ++i)
+    // for (int i = 1; i <= n; ++i)
+    {
+        cout << a[i] << " "
+             << " ";
         for (int w = 0; w <= W; ++w)
         {
-            if (w >= weight[i])
-            {
-                dp[i + 1][w] = max(dp[i][w - weight[i]] + value[i], dp[i][w]);
-            }
-            else
-            {
-                dp[i + 1][w] = dp[i][w];
-            }
+            dp[i + 1][w] |= dp[i][w];
+            if (w >= a[i])
+                dp[i + 1][w] |= dp[i][w - a[i]];
+
             if (dp[i][w] < 10)
             {
                 cout << dp[i][w] << "  ";
