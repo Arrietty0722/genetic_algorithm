@@ -174,6 +174,7 @@ int main()
         {
             dp[i + 1][w] |= dp[i][w];
             if (w >= a[i])
+
                 dp[i + 1][w] |= dp[i][w - a[i]];
 
             if (dp[i][w] < 10)
