@@ -161,8 +161,11 @@ int main()
     for (int w = 0; w <= W; ++w)
     {
         dp[0][w] = false;
+
         if (w == 0)
+        {
             dp[0][w] = true;
+        }
     }
 
     for (int i = 0; i <= n; ++i)
