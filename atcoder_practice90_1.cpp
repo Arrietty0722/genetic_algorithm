@@ -7,6 +7,8 @@
 #include <vector>
 using namespace std;
 
+// practice DP
+
 // int main()
 // {
 //     int N;
