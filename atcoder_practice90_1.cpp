@@ -48,16 +48,17 @@ using namespace std;
 //     return 0;
 // }
 
-// int findSumOfDigits(int n)
-// {
-//     int sum = 0;
-//     while (n > 0)
-//     {
-//         sum += n % 10;
-//         n /= 10;
-//     }
-//     return sum;
-// }
+// Case2
+//  int findSumOfDigits(int n)
+//  {
+//      int sum = 0;
+//      while (n > 0)
+//      {
+//          sum += n % 10;
+//          n /= 10;
+//      }
+//      return sum;
+//  }
 
 // int main()
 // {
