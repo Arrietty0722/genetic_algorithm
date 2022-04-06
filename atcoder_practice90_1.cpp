@@ -104,10 +104,11 @@ using namespace std;
 //     return 0;
 // }
 
-// int n, W;
-// // int weight[110], value[110];
-// // int weight[6], value[6];
-// int dp[10][10010];
+// case4
+//  int n, W;
+//  // int weight[110], value[110];
+//  // int weight[6], value[6];
+//  int dp[10][10010];
 
 // int main()
 // {
